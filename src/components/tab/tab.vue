@@ -34,6 +34,7 @@
         display flex
         flex-direction column
         justify-content flex-end
+        align-items: center
         .text
           font-size 12px
           margin 5px 0
