@@ -1,0 +1,35 @@
+.border1px,.borderT1px{
+    position: relative;
+}
+.border1px:after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #e2e2e2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.borderT1px:after{
+    content: '';
+    height: 1px;
+    width: 100%;
+    background-color: #e2e2e2;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio: 2) {
+    .border1px:after,.borderT1px:after{
+        transform: scaleY(50%);
+        -webkit-transform: scaleY(50%);
+    }
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 3) {
+    .border1px:after,.borderT1px:after{
+        transform: scaleY(33.3%);
+        -webkit-transform: scaleY(33.3%);
+    }
+}
