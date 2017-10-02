@@ -9,10 +9,10 @@
             <serch-box></serch-box>
         </div>
     </div>
-    <div class="hot-content">
-      <switches :switches="switches" :currentIndex="currentIndex" @index="switchIndex"/>
-      <movie-list></movie-list>
-    </div>
+   
+    <switches :switches="switches" :currentIndex="currentIndex" @index="switchIndex"/>
+    <movie-list class="movie-list" :currentIndex="currentIndex"></movie-list>
+   
   </div>  
 </template>
 
@@ -21,7 +21,7 @@
     import Switches from 'base/switches/switches'
     import MovieList from 'components/movie-list/movie-list'
 
-    import {getMovies} from 'apis/hot'
+   
     export default {
         created() {
           this.switches = [{
@@ -30,7 +30,6 @@
             name: '即将上映'
           }
           ]
-          this._getMovies()
         },
         data() {
           return {
@@ -38,11 +37,6 @@
           }
         },
         methods: {
-          _getMovies(){
-            getMovies().then((res) => {
-              console.log(res)
-            })
-          },
           switchIndex(index) {
             this.currentIndex = index
           }
@@ -67,4 +61,10 @@
         line-height 44px
     .right
       flex 1
+  .movie-list
+    position fixed
+    top 84px
+    bottom 44px
+    width 100%
+    overflow:hidden
 </style>
