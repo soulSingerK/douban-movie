@@ -1,6 +1,6 @@
 <template>
   <div>
-    <movie-view :data="data" v-if="data.length" v-show="currentIndex === 0"></movie-view>  
+    <movie-view :data="data" v-if="data.length" v-show="currentIndex === 0" @selectMovie="selectMovie"></movie-view>  
     <router-view></router-view>
   </div>
 </template>
@@ -10,6 +10,7 @@
   import {getMovies} from 'apis/hot'
   import {Movie} from 'common/js/movie'
   import {Actor} from 'common/js/actor'
+  import {mapMutations} from 'vuex'
 
   export default {
     props: {
@@ -27,6 +28,12 @@
       this._getMovies()
     },
     methods: {
+      selectMovie(movie) {
+        this.setMovie(movie)
+        this.$router.push({
+          path: `/hot/${movie.id}`
+        })
+      },
       _getMovies() {
         getMovies().then((res) => {
           let data = res.subjects
@@ -53,8 +60,12 @@
           return movie
         })
         return ret
-      }
+      },
+      ...mapMutations({
+        setMovie: 'MOVIE'
+      })
     },
+
     components: {
       MovieView
     }

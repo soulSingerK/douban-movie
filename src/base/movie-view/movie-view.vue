@@ -1,7 +1,7 @@
 <template>
   <scroll :data="data" class="item-view">
     <ul class="items">
-      <li v-for="item in data" class="item border1px">
+      <li v-for="item in data" class="item border1px" @click="selectItem(item)">
         <img :src="item.images.small" alt="" width="70px" height="110px">
         <div class="content">
           <div class="con-left">
@@ -21,7 +21,6 @@
             <button class="btn">购票</button>
           </div>
         </div>
-        
       </li>
     </ul>
   </scroll>
@@ -43,6 +42,9 @@
           names += casts[i].name + ' / '
         }
         return names.substring(0, names.length - 2)
+      },
+      selectItem(item) {
+        this.$emit('selectMovie', item)
       }
     },
     filters: {

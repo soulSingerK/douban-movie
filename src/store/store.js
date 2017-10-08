@@ -1,4 +1,5 @@
 let store = {
-  name: ''
+  name: '',
+  movie: null
 }
 export default store

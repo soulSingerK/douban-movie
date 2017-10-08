@@ -11,3 +11,11 @@ export function getMovies() {
 
     return jsonp(url, data, options)
 }
+
+export function getMovieDetail(id) {
+    const url = 'http://api.douban.com/v2/movie/subject/'+id
+    const data = Object.assign({}, commonParam, {
+        city: '北京'
+    })
+    return jsonp(url, data, options)
+}

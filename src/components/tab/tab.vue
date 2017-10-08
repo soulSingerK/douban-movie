@@ -24,6 +24,7 @@
 <style scoped lang="stylus" rel="stylesheet/stylus">
     .tab
       position fixed
+      z-index -1
       bottom 0
       left 0
       height 44px

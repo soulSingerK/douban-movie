@@ -19,6 +19,12 @@ const UserCenter = (resolve) => {
   })
 }
 
+const MovieDetail = (resolve) => { 
+  import('components/movie-detail/movie-detail').then((module) => {
+    resolve(module)
+  })
+}
+
 export default new Router({
   routes: [
     {
@@ -27,7 +33,13 @@ export default new Router({
     },
     {
       path: '/hot',
-      component: HotPlay
+      component: HotPlay,
+      children: [
+        {
+          path: ':id',
+          component: MovieDetail
+        }
+      ]
     },
     {
       path: '/find',
